@@ -1,0 +1,91 @@
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  box-shadow: 0 0 4px #000;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 78%;
+}
+
+.image-logo {
+  display: block;
+  position: relative;
+  width: 10%;
+}
+
+.righ-side {
+  width: 80%;
+}
+
+header li {
+  display: inline;
+  font-size: 1.3rem;
+  letter-spacing: normal;
+  color: #333;
+}
+
+.list {
+  margin-left: 5%;
+  font-size: 1.7rem;
+}
+
+.list:hover {
+  color: goldenrod;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.header-btn a {
+  border: solid 1px rgb(148, 145, 145);
+}
+
+.header-btn a {
+  color: #fff;
+  background-color: royalblue;
+  border-radius: 30px;
+  font-size: 1.4rem;
+  position: relative;
+  transition: 0.3s ease;
+  margin: 5px;
+  padding: 10px;
+}
+
+.header-btn a:hover {
+  background-color: goldenrod;
+}
+
+header li a {
+  color: #333;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.btns {
+  /* width: 35; */
+  height: auto;
+  float: right;
+}
+
+#sign-in {
+  margin-right: 10px;
+}
+
+header li {
+  display: inline;
+  font-size: 1.3rem;
+  letter-spacing: normal;
+  color: #333;
+}
