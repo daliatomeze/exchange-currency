@@ -1,0 +1,19 @@
+.h2{
+    margin: 0px 0px 32px;
+    color: rgb(10, 20, 110);
+    font-family: sans-serif;
+  }
+  
+  .spans{
+    width: 60%;
+    margin-left: 20%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .map{
+      margin-top: 100px;
+      
+  }

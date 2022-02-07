@@ -1,11 +1,11 @@
 import './App.css';
 import Header from './components/header/header';
-import Home from './components/home/home';
+import Home from './pages/homePage/homePage.component';
 
 
 function App() {
   return (
-    <div className="body">
+    <div >
       <Header></Header>
       <Home></Home>
       
