@@ -1,13 +1,15 @@
-header {
+.header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   background-color: white;
   box-shadow: 0 0 4px #000;
+  width: 100%;
 }
 
 .center {
+  display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -17,20 +19,20 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 78%;
+  width: 100%;
 }
 
-.image-logo {
+.imageLogo {
   display: block;
   position: relative;
   width: 10%;
 }
 
-.righ-side {
+.rightSide {
   width: 80%;
 }
 
-header li {
+.header li {
   display: inline;
   font-size: 1.2rem;
   letter-spacing: normal;
@@ -48,11 +50,11 @@ header li {
   text-decoration: underline;
 }
 
-.header-btn a {
+.headerBtn a {
   border: solid 1px rgb(148, 145, 145);
 }
 
-.header-btn a {
+.headerBtn a {
   color: #fff;
   background-color: rgb(46, 60, 87);
   margin: 0;
@@ -61,14 +63,14 @@ header li {
   position: relative;
   transition: 0.3s ease;
   margin: 3px;
-  padding: 10px;
+  padding: 15px;
 }
 
-.header-btn a:hover {
-  background-color: goldenrod;
+.headerBtn a:hover {
+  background-color: rgb(86, 87, 102);
 }
 
-header li a {
+.header li a {
   color: #333;
   text-decoration: none;
   padding: 5px;
@@ -84,9 +86,4 @@ header li a {
   margin-right: 10px;
 }
 
-header li {
-  display: inline;
-  font-size: 1.3rem;
-  letter-spacing: normal;
-  color: #333;
-}
+
