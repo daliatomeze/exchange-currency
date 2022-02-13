@@ -1,6 +1,14 @@
-const express = require('express')
-const app = express()
-const port = 3000
+var express = require("express");
+const bodyParser = require("body-parser");
+const cors = require('cors')
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+const conversionController = require("./app/controllers/conversion");
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+app.use("/conversion", conversionController);
+
+app.listen(5000, () => {
+  console.log("the app is running ");
+});

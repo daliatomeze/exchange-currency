@@ -6,10 +6,13 @@ import AddNewCurrencyDropDown from '../add-new-currency-dropdown/add-new-currenc
 
 import CurrencyDropdown from '../currency-dropdown/currency-dropdown-component';
 import "./live-exchange-component.css"
+
+const API = 'http://localhost:5000/'
+
 function LiveExhnage() {
 
     const [data,
-        setdata] = useState([]);
+        setdata] = useState({});
 
     const [baseCurrency,
         setbaseCurrency] = useState("USD");
@@ -25,28 +28,18 @@ function LiveExhnage() {
     const [editEnabled,
         seteditEnabled] = useState(false);
 
-    const fetchData = async(currency = "USD") => {
 
-        function getYesterdayDate() {
-            let s = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
-
-            return s.getFullYear() + '-' + ((s.getMonth() < 10)
-                ? ('0' + (s.getMonth() + 1))
-                : (s.getMonth() + 1)) + '-' + ((s.getDate() < 10)
-                ? '0' + s.getDate()
-                : s.getDate());
-        }
-
+    const fetchData = async(currency = "USD" , setdata,  sethistoryData) => {
         try {
-            const jsonData = await fetch(`https://freecurrencyapi.net/api/v2/latest?apikey=92b962e0-8460-11ec-a770-697cd1f97345&base_currency=${currency}`)
+            const jsonData = await fetch(`${API}conversion/convert?from=${currency}`)
             const result = await jsonData.json()
-            setdata(result.data)
+            
+            setdata(result)
 
-            const jsonHistoryData = await fetch(`https://freecurrencyapi.net/api/v2/historical?apikey=92b962e0-8460-11ec-a770-697cd1f97345&base_currency=${currency}&date_from=${getYesterdayDate()}`)
-            console.log(`https://freecurrencyapi.net/api/v2/historical?apikey=92b962e0-8460-11ec-a770-697cd1f97345&base_currency=${currency}&date_from=${getYesterdayDate()}`)
+            const jsonHistoryData = await fetch(`${API}conversion/change-rate?from=${currency}`)
             const resultHistory = await jsonHistoryData.json()
 
-            sethistoryData(resultHistory.data)
+            sethistoryData(resultHistory)
         } catch (e) {
             console.log(e)
         }
@@ -54,20 +47,14 @@ function LiveExhnage() {
     }
 
     useEffect(() => {
-        fetchData()
+        fetchData("USD" , setdata , sethistoryData)
     }, []);
 
-    const showChangeRate = (curr) => {
-        if (!historyData || Object.keys(historyData).length === 0) {
-            return ""
-        }
-        const before = historyData[Object.keys(historyData)[0]][curr]
-        const after = historyData[Object.keys(historyData)[1]][curr]
-
-        let per = (((after - before) / before) * 100);
+    const showChangeRate = (curr , historyData) => {
+        
+        let per = historyData[curr];
         if (toggleInverse) 
             per = -per;
-        
         return ((per < 0)
             ? "-"
             : "") + '%' + Math.abs(per.toFixed(6))
@@ -167,7 +154,7 @@ function LiveExhnage() {
                                 ? (1 / data[curr]).toFixed(3) + " " + baseCurrency
                                 : data[curr]
                                 : ""}</th>
-                        <th data-label="Change(24h)" className={toggleInverse?'currency-data-field-in':"currency-data-field-out"}>{showChangeRate(curr)}</th>
+                        <th data-label="Change(24h)" className={toggleInverse?'currency-data-field-in':"currency-data-field-out"}>{showChangeRate(curr , historyData)}</th>
                         <th data-label="Chart(24h)" className={toggleInverse?'currency-data-field-in':"currency-data-field-out"}></th>
 
                         <th data-label="btn">
