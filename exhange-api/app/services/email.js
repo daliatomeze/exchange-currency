@@ -1,14 +1,14 @@
 
+const sgMail = require('@sendgrid/mail')
+
 class EmailService {
-    #API_KEY = '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'
+    #API_KEY = "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"
     #sgMail;
 
-    #from = "omar.aburish@gmail.com"
+    #from ='currency.exhange.pseu@gmail.com'
 
     constructor() {
-        this.#sgMail = require('@sendgrid/mail')
-
-        this.#sgMail.setApiKey(this.#API_KEY)
+        sgMail.setApiKey(this.#API_KEY)
     }
 
     async #sendEmail(to , subject , text ,html ) {
@@ -16,7 +16,6 @@ class EmailService {
             to: to, // Change to your recipient
             from: this.#from, // Change to your verified sender
             subject: subject,
-            text: text,
             html: html,
         }
 
@@ -34,20 +33,19 @@ class EmailService {
 
     /**
      * 
-     * @param {User} moneySender  
-     * @param {User} moneyReciever 
-     * @param {Number} amonut 
-     * @param {String} currency , like "USD" 
+     * @param {Transaction} transaction  
      */
-    async sendTransactionEmail(moneySender , moneyReciever , amonut , currency) {
+    async sendTransactionEmail(transaction) {
+        let transactionInfo = transaction.getTransaction();
+        //console.log(transactionInfo.amount)
         let html = `
             <strong>
-                ${moneyReciever.name}  , you have recieved ${amonut} ${currency} from ${moneySender.name}
+                ${transactionInfo.from.getUser().name}  , you have recieved ${transactionInfo.amount} ${transactionInfo.currency} from ${transactionInfo.to.getUser().name}
             </strong>
         `
         try {
-            
-            await this.#sendEmail(moneySender.email , "Transaction has been Made" ,"" , html)
+            let x = await this.#sendEmail(transactionInfo.to.getUser().email , "Transaction has been Made" ,"" , html)
+            console.log(x)
         }
         catch(e) {
             console.error(e)

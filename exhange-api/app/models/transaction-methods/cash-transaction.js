@@ -34,7 +34,8 @@ class CashTransaction extends Transaction {
             to: this.receiver,
             method:"Cash Transaction",
             referenceNumber: this.#referenceNumber,
-            amount: this.amount
+            amount: this.amount,
+            currency: this.currency
         }
     }
 

@@ -16,21 +16,23 @@ transactionRoute.post("/make-transaction", async (req, res) => {
         await senderUser.addUser()
         await recieverUser.addUser()
 
+        let newTransaction ;
         if(req.body.transaction.type === "bank-transaction") {
-            let newTransaction = new BankTransaction(new Date(),senderUser , recieverUser , req.body.transaction.accountNumber ,req.body.transaction.amount, req.body.transaction.currency )
-            console.log(newTransaction.getTransaction())
+            newTransaction = new BankTransaction(new Date(),senderUser , recieverUser , req.body.transaction.accountNumber ,req.body.transaction.amount, req.body.transaction.currency )
             let x = await newTransaction.addTransaction();
-            console.log(x);
+            
         }
         else if(req.body.transaction.type === "cash-transaction") {
-            let newTransaction = new CashTransaction(new Date(),senderUser , recieverUser , req.body.transaction.referenceNumber ,req.body.transaction.amount, req.body.transaction.currency )
+            newTransaction = new CashTransaction(new Date(),senderUser , recieverUser , req.body.transaction.referenceNumber ,req.body.transaction.amount, req.body.transaction.currency )
             let x = await newTransaction.addTransaction();
-            console.log(x);
+            
         }
         else {
             throw new Error("Invalid transaction type")
         }
-        res.send("Done");
+
+        emailService.sendTransactionEmail(newTransaction)
+        res.send("Transaction has been made");
     }
     catch(e) {
         console.error(e)

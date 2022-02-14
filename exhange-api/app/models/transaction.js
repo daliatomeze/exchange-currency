@@ -8,6 +8,14 @@ class Transaction {
     amount;
     currency;
 
+    /**
+     * 
+     * @param {Date} date 
+     * @param {User} sender 
+     * @param {User} receiver 
+     * @param {Number} amount 
+     * @param {String} currency 
+     */
     constructor( date , sender , receiver , amount , currency) {
         this.date = date ;
         this.sender = sender ;

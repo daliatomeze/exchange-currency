@@ -25,7 +25,8 @@ class BankTransaction extends Transaction {
             to: this.receiver.getUser(),
             method:"Bank Transaction",
             accountNumber: this.accountNumber,
-            amount: this.amount
+            amount: this.amount,
+            currency: this.currency
         }
     }
 
