@@ -1,5 +1,6 @@
 import React, {useState,useEffect,Component } from "react";
 import Send from "../../components/send/send.component";
+import Alert from "../../components/Alert/alert.component"
 import classes from '../homePage/homePage.module.css';
 import {SiConvertio } from "react-icons/si";
 import { FiSend} from "react-icons/fi";
@@ -9,11 +10,12 @@ import Map from "../../components/map/map.component";
 import ConvertSection from '../../components/convert/convert-section.component';
 import LiveExhnage from "../../components/live-exhange/live-exchange-component";
 import {
-  BrowserRouter as Router,
+  BrowserRouter ,
   Routes,
   Route,
   Link
 } from "react-router-dom";
+import AlertStep from "../../components/alertStep/alertStep.component";
 
 
 const Home = () => {
@@ -55,7 +57,7 @@ const Home = () => {
       <Route path="/" element={  <ConvertSection></ConvertSection> }/>
       <Route path="send" element={ <Send/> }/>
       <Route path="chart" element={ <Send/> }/>
-      <Route path="alert" element={ <Send/> }/>
+      <Route path="alert" element={ <Alert/> }/>
       
        
    
@@ -76,7 +78,7 @@ const Home = () => {
      }/>
        <Route path="send" element={ <Map/> }/>
       <Route path="chart" element={ <Map/> }/>
-      <Route path="alert" element={ <Map/>}/>
+      <Route path="alert" element={ <AlertStep/>}/>
        
    
     </Routes>
@@ -90,3 +92,4 @@ const Home = () => {
 }
 
 export default Home;
+

@@ -4,12 +4,15 @@ import { BsBank } from "react-icons/bs";
 import { FcMoneyTransfer } from "react-icons/fc";
 import masterCard from '../../img/masterCard.png';
 import { useState } from 'react';
+import {Icon,Button}  from 'semantic-ui-react';
 
 
 const Send=()=>{
    
 const[method,setMethod]=useState(false);
-
+const[receiver,setReceiver]=useState("");
+const[amount,setAmount]=useState(0);
+const[recNum,setRecNum]=useState("");
   const chose=(bool)=>{
 setMethod(bool);
   }
@@ -25,7 +28,7 @@ setMethod(bool);
         Receiver Name
         </legend>
 
-        <input type='text'  className={classes.input} placeholder='Receiver Full Name'></input>
+        <input type='text' value={receiver} onChange={(e)=>{setReceiver(e.target.value)}}  className={classes.input} placeholder='Receiver Full Name'></input>
       
     </fieldset>
 
@@ -35,7 +38,7 @@ setMethod(bool);
         amount
         </legend>
 
-        <input type='number'  className={classes.input} placeholder='maximum 2000$'></input>
+        <input type='number'  className={classes.input} placeholder='maximum 2000$'  value={amount} onChange={(e)=>{setAmount(e.target.value)}}></input>
         <select>
             <option>USD</option>
         </select>
@@ -64,11 +67,11 @@ setMethod(bool);
    
     </legend>
 
-    <input type='text'  className={classes.input}></input>
+    <input type='text'  className={classes.input}  value={recNum} onChange={(e)=>{setRecNum(e.target.value)}}></input>
 </fieldset>
 
         
-    <button  className={classes.sendButton} >Send</button>
+<div  className={classes.sendButton}><Button size='large' color='blue'>Send</Button></div>
 
         
     
