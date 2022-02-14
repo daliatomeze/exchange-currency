@@ -2,8 +2,7 @@
 const sgMail = require('@sendgrid/mail')
 
 class EmailService {
-    #API_KEY = "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"
-    #sgMail;
+    #API_KEY = "<API_KEY>"
 
     #from ='currency.exhange.pseu@gmail.com'
 
