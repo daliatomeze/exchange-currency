@@ -15,7 +15,7 @@ class BankTransaction extends Transaction {
         super(0 , dateOfTransaction, sender , receiver , amount , currency)
        
         
-        this.accountNumber = accountNumber;
+        this.#accountNumber = accountNumber;
        
     }
     getTransaction() {
@@ -38,11 +38,25 @@ class BankTransaction extends Transaction {
         const sqlQuery = `INSERT INTO transaction (SENDER_EMAIL,RECEIVER_EMAIL,TYPE, AMOUNT , CURRENCY) VALUES ('${this.sender.getUser().email
         }', '${this.receiver.getUser().email}','bank-transaction', '${this.amount}' , '${this.currency}' )`;
         
-        return await connection.query(sqlQuery)
-            .then(([rows, fields]) => {
-            return 'successfully added a new transaction ';
-            })
-            .catch((err) => err);
+        try {
+            let {insertId}=  await connection.query(sqlQuery)
+                .then(([rows, fields]) => {
+                return rows;
+                })
+                .catch((err) => {throw new Error(e)});
+    
+            const sqlQuery2 =  `INSERT INTO BANK_TRANSACTION (TRANSACTION_ID,ACCOUNT_NUMBER) VALUES (${insertId}, ${this.#accountNumber})`;
+    
+            return await connection.query(sqlQuery2)
+                .then(([rows, fields]) => {
+                return "Transaction has been added Successfully to the database";
+                })
+                .catch((err) => err);
+
+        }
+        catch(e) {
+            return e
+        }
     }
 }
 

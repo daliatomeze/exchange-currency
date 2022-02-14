@@ -1,6 +1,6 @@
 
 class Transaction {
-    id;
+
     date;
     sender;
 
@@ -8,8 +8,7 @@ class Transaction {
     amount;
     currency;
 
-    constructor(id,  date , sender , receiver , amount , currency) {
-        this.id = id ;
+    constructor( date , sender , receiver , amount , currency) {
         this.date = date ;
         this.sender = sender ;
         this.receiver = receiver;

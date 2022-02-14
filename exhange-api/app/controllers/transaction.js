@@ -1,5 +1,6 @@
 const express = require("express");
 const BankTransaction = require("../models/transaction-methods/back-transaction");
+const CashTransaction = require("../models/transaction-methods/cash-transaction")
 const User = require("../models/user");
 const EmailService = require('../services/email')
 
