@@ -5,7 +5,6 @@ class CashTransaction extends Transaction {
 
     /**
      * Creates A new Cash Transaction 
-     * @param {Number} id 
      * @param {Date} dateOfTransaction 
      * @param {User} sender 
      * @param {User} receiver 
@@ -13,7 +12,7 @@ class CashTransaction extends Transaction {
      * @param {Number} amount 
      * @param {String} currency , like "USD"
      */
-    constructor(id , dateOfTransaction , sender, receiver , referenceNumber, amount,currency) {
+    constructor( dateOfTransaction , sender, receiver , referenceNumber, amount,currency) {
         this.#id = id ;
         this.#date = dateOfTransaction;
         this.#sender = sender;
@@ -37,6 +36,24 @@ class CashTransaction extends Transaction {
             referenceNumber: this.#referenceNumber,
             amount: this.#amount
         }
+    }
+
+    /**
+     * Adds the transaction to the database
+     * @returns status of the operation
+     */
+    async addTransaction() {
+        
+      
+        const sqlQuery = `INSERT INTO transaction (ID,SENDER_EMAIL,RECEIVER_EMAIL,TYPE, AMOUNT , CURRENCY) VALUES (NULL,'${this.sender.email
+            }', '${this.receiver.email}','bank-transaction', '${this.amount}'   , '${this.currency}' )`;
+    
+        
+        return await connection.query(sqlQuery)
+            .then(([rows, fields]) => {
+            return 'successfully added a new transaction ';
+            })
+            .catch((err) => err);
     }
 }
 

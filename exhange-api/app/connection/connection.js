@@ -4,7 +4,7 @@ var con = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "",
-  database: "CurrencyExchange",
+  database: "currency_exchange",
 });
 
 module.exports = con;
