@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {Dropdown} from 'semantic-ui-react'
+import {Dropdown} from 'semantic-ui-react';
 
 import currenciesOptions from '../../data/currencies-data.json';
-import './currency-dropdown-component.css'
+import './currency-dropdown-component.css';
 
 function CurrencyDropdown({
     setvalue,

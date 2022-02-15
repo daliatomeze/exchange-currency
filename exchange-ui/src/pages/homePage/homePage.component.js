@@ -30,9 +30,9 @@ const Home = () => {
       <div
         className={classes.bgimg}
       >
-        <div className={classes.row }  className={classes.center}>
+        <div  className={classes.center}>
           <div className={classes.homeContent}>
-            <h1  style={{ color:'rgb(19 22 33)'  }} className={classes.h }>The World's Trusted Currency Authority</h1>
+            <h1  style={{ color:'rgb(255 255 255)'  }} className={classes.h }>The World's Trusted Currency Authority</h1>
             <p className={classes.p}>
               Check exchange rates, send money internationally, and free
               currency tools
@@ -74,8 +74,7 @@ const Home = () => {
                 
                 
         <Routes>
-      <Route path="/" element={ <LiveExhnage/>
-     }/>
+      <Route path="/" element={ <LiveExhnage/> }/>
        <Route path="send" element={ <Map/> }/>
       <Route path="chart" element={ <Map/> }/>
       <Route path="alert" element={ <AlertStep/>}/>

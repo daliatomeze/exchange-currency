@@ -2,10 +2,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  background-color: white;
-  box-shadow: 0 0 4px #000;
-  width: 100%;
+  justify-content: space-evenly;
+  background-image: linear-gradient(to right, rgb(249, 252, 255) ,rgb(148, 198, 241), rgb(47, 91, 148));
 }
 
 .center {
@@ -13,19 +11,30 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 78%;
+  height: 50px;
 }
 
 .nav {
   display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  width: 78%;
+  height: 50px;
 }
 
 .imageLogo {
   display: block;
   position: relative;
-  width: 10%;
+  width: 6%;
+  height: 100%;
 }
 
 .rightSide {
@@ -34,20 +43,19 @@
 
 .header li {
   display: inline;
-  font-size: 1.2rem;
+  font-size: 20px;
   letter-spacing: normal;
-  color: #333;
+  color: rgb(0, 0, 0);
 }
 
 .list {
-  margin-left: 3%;
-  font-size: 1.2rem;
+  margin-left: 5%;
+  font-size: 20px
 }
 
 .list:hover {
-  color: goldenrod;
+  color: rgb(26, 29, 46);
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .headerBtn a {
@@ -56,34 +64,35 @@
 
 .headerBtn a {
   color: #fff;
-  background-color: rgb(46, 60, 87);
-  margin: 0;
+  background-color: rgb(24, 42, 95);
   border-radius: 20px;
-  font-size: 1.2rem;
+  font-size: 17px;
   position: relative;
   transition: 0.3s ease;
-  margin: 3px;
-  padding: 15px;
+  margin-left: 2px;
+  padding: 8px;
 }
 
 .headerBtn a:hover {
-  background-color: rgb(86, 87, 102);
+  background-color: rgb(90, 126, 192);
 }
 
 .header li a {
-  color: #333;
   text-decoration: none;
   padding: 5px;
 }
 
 .btns {
-  /* width: 35; */
-  height: auto;
-  float: right;
+  font-size: 20px;
 }
 
 #sign-in {
   margin-right: 10px;
 }
-
+.header li{
+display: inline;
+font-size: 20px;
+letter-spacing: normal;
+color: rgb(17, 14, 14);
+}
 
